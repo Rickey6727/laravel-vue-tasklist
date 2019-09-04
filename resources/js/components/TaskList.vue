@@ -81,14 +81,14 @@
                 var article = {
                     'name': this.newTaskName
                 };
-                axios.get('/task/add', article)
+                axios.post('/task/add', article)
             },
             editTask: function (task) {
-                axios.get('/task/edit/' + task.id, task)
+                axios.post('/task/edit/' + task.id, task)
 
             },
             deleteTask: function (task) {
-                axios.get('/task/delete/' + task.id, task)
+                axios.post('/task/delete/' + task.id, task)
             }
         }
     }
