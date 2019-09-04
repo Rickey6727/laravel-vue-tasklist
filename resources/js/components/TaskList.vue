@@ -74,7 +74,8 @@
             }
         },
         mounted() {
-          axios.get('/task/get').then(response => this.tasks = response.data)
+            axios.get('/task/get')
+                .then(response => this.tasks = response.data)
         },
         methods: {
             addTask: function () {
@@ -82,13 +83,27 @@
                     'name': this.newTaskName
                 };
                 axios.post('/task/add', article)
+                    .then(response => {
+                        console.log('add完了： ' + response.data)
+                    }).catch(error => {
+                        console.log(error)
+                    });
             },
             editTask: function (task) {
                 axios.post('/task/edit/' + task.id, task)
-
+                    .then(response => {
+                        console.log('edit完了： ' + response.data)
+                    }).catch(error => {
+                        console.log(error)
+                    });
             },
             deleteTask: function (task) {
                 axios.post('/task/delete/' + task.id, task)
+                    .then(response => {
+                        console.log('delete完了： ' + response.data)
+                    }).catch(error => {
+                        console.log(error)
+                    });
             }
         }
     }
