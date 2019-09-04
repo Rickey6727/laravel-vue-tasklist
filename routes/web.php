@@ -32,4 +32,23 @@ Route::post('/task/delete/{task}', function (\App\Task $task) {
     $task->delete();
     return redirect('/');
 });
+
+Route::get('/task/add', function (Request $request) {
+    $task = new \App\Task;
+    $task->name = request('name');
+    $task->save();
+    return redirect('/');
+});
+
+Route::get('/task/edit/{task}', function (Request $request) {
+    $task = \App\Task::find($request->id);
+    $task->name = $request->name;
+    $task->save();
+    return redirect('/');
+});
+   
+Route::get('/task/delete/{task}', function (\App\Task $task) {
+    $task->delete();
+    return redirect('/');
+});
   
