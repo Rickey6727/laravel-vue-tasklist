@@ -1946,13 +1946,25 @@ __webpack_require__.r(__webpack_exports__);
       var article = {
         'name': this.newTaskName
       };
-      axios.post('/task/add', article);
+      axios.post('/task/add', article).then(function (response) {
+        console.log('add完了： ' + response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     editTask: function editTask(task) {
-      axios.post('/task/edit/' + task.id, task);
+      axios.post('/task/edit/' + task.id, task).then(function (response) {
+        console.log('edit完了： ' + response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     deleteTask: function deleteTask(task) {
-      axios.post('/task/delete/' + task.id, task);
+      axios.post('/task/delete/' + task.id, task).then(function (response) {
+        console.log('delete完了： ' + response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
