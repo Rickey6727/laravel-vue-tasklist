@@ -6,7 +6,7 @@
 					New Task
 				</div>
 				<div class="panel-body">
-					<form class="form-horizontal">
+					<form class="form-horizontal" method="POST">
                         <div class="form-group">
                             <label for="task-name" class="col-sm-3 control-label">Task Name</label>
                             <div class="col-sm-6">
@@ -30,7 +30,7 @@
                         <tbody>
                             <tr v-for="(task, index) in tasks" :key="index">
                                 <div class="col-sm-9">
-                                    <form>
+                                    <form method="POST">
                                         <input class="form-control" type="hidden" name="id">
                                         <td class="col-sm-10">
                                             <div class="form-group">
@@ -48,7 +48,7 @@
                                     </form>
                                 </div>
                                 <div class="col-sm-3">
-                                    <form>
+                                    <form method="POST">
                                         <td>
                                             <button type="submit" class="btn btn-danger" v-on:click="deleteTask(task)">
                                                 Delete
@@ -88,7 +88,7 @@
 
             },
             deleteTask: function (task) {
-                axios.delete('/task/delete/' + task.id, task)
+                axios.post('/task/delete/' + task.id, task)
             }
         }
     }

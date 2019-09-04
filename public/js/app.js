@@ -1952,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/task/edit/' + task.id, task);
     },
     deleteTask: function deleteTask(task) {
-      axios["delete"]('/task/delete/' + task.id, task);
+      axios.post('/task/delete/' + task.id, task);
     }
   }
 });
@@ -37239,62 +37239,66 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
-          _c("form", { staticClass: "form-horizontal" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-sm-3 control-label",
-                  attrs: { for: "task-name" }
-                },
-                [_vm._v("Task Name")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.newTaskName,
-                      expression: "newTaskName"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    name: "name",
-                    id: "task-name",
-                    placeholder: "タスクを入力"
-                  },
-                  domProps: { value: _vm.newTaskName },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.newTaskName = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-3" }, [
+          _c(
+            "form",
+            { staticClass: "form-horizontal", attrs: { method: "POST" } },
+            [
+              _c("div", { staticClass: "form-group" }, [
                 _c(
-                  "button",
+                  "label",
                   {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "submit" },
-                    on: { click: _vm.addTask }
+                    staticClass: "col-sm-3 control-label",
+                    attrs: { for: "task-name" }
                   },
-                  [
-                    _c("i", { staticClass: "fa fa-btn fa-plus" }),
-                    _vm._v(" Add Task\n                                ")
-                  ]
-                )
+                  [_vm._v("Task Name")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newTaskName,
+                        expression: "newTaskName"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "name",
+                      id: "task-name",
+                      placeholder: "タスクを入力"
+                    },
+                    domProps: { value: _vm.newTaskName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.newTaskName = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      attrs: { type: "submit" },
+                      on: { click: _vm.addTask }
+                    },
+                    [
+                      _c("i", { staticClass: "fa fa-btn fa-plus" }),
+                      _vm._v(" Add Task\n                                ")
+                    ]
+                  )
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -37311,7 +37315,7 @@ var render = function() {
                   _vm._l(_vm.tasks, function(task, index) {
                     return _c("tr", { key: index }, [
                       _c("div", { staticClass: "col-sm-9" }, [
-                        _c("form", [
+                        _c("form", { attrs: { method: "POST" } }, [
                           _c("input", {
                             staticClass: "form-control",
                             attrs: { type: "hidden", name: "id" }
@@ -37385,7 +37389,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-3" }, [
-                        _c("form", [
+                        _c("form", { attrs: { method: "POST" } }, [
                           _c("td", [
                             _c(
                               "button",
